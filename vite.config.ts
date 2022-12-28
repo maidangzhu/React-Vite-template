@@ -7,30 +7,24 @@ import viteCompression from 'vite-plugin-compression'
 import eslintPlugin from 'vite-plugin-eslint'
 
 // @see: https://vitejs.dev/config/
-export default defineConfig((mode: ConfigEnv): UserConfig => {
+defineConfig((mode: ConfigEnv): UserConfig => {
 	const env = loadEnv(mode.mode, process.cwd())
 	const viteEnv = wrapperEnv(env)
 
 	return {
-		// base: "/",
-		// alias config
 		resolve: {
 			alias: {
 				'@': resolve(__dirname, './src')
 			}
 		},
-		// global css
-		css: {
-			preprocessorOptions: {
-				less: {
-					// modifyVars: {
-					// 	"primary-color": "#1DA57A",
-					// },
-					javascriptEnabled: true,
-					additionalData: `@import "@/styles/var.less";`
-				}
-			}
-		},
+		// css: {
+		// 	preprocessorOptions: {
+		// 		less: {
+		// 			javascriptEnabled: true,
+		// 			additionalData: `@import "@/styles/var.less";`
+		// 		}
+		// 	}
+		// },
 		plugins: [
 			react(),
 			createHtmlPlugin({

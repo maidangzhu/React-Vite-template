@@ -1,22 +1,7 @@
-import path from "path";
-
-export function isDevFn(mode: string): boolean {
-	return mode === "development";
-}
-
-export function isProdFn(mode: string): boolean {
-	return mode === "production";
-}
-
-/**
- * Whether to generate package preview
- */
-export function isReportMode(): boolean {
-	return process.env.VITE_REPORT === "true";
-}
+import process from "process";
 
 // Read all environment variable configuration files to process.env
-export function wrapperEnv(envConf: Recordable): ViteEnv {
+export function wrapperEnv(envConf: any) {
 	const ret: any = {};
 
 	for (const envName of Object.keys(envConf)) {
@@ -37,12 +22,4 @@ export function wrapperEnv(envConf: Recordable): ViteEnv {
 		process.env[envName] = realName;
 	}
 	return ret;
-}
-
-/**
- * Get user root directory
- * @param dir file path
- */
-export function getRootPath(...dir: string[]) {
-	return path.resolve(process.cwd(), ...dir);
 }
