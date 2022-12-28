@@ -6,7 +6,6 @@ import { createHtmlPlugin } from 'vite-plugin-html'
 import viteCompression from 'vite-plugin-compression'
 import eslintPlugin from 'vite-plugin-eslint'
 
-// @see: https://vitejs.dev/config/
 defineConfig((mode: ConfigEnv): UserConfig => {
 	const env = loadEnv(mode.mode, process.cwd())
 	const viteEnv = wrapperEnv(env)
@@ -17,14 +16,6 @@ defineConfig((mode: ConfigEnv): UserConfig => {
 				'@': resolve(__dirname, './src')
 			}
 		},
-		// css: {
-		// 	preprocessorOptions: {
-		// 		less: {
-		// 			javascriptEnabled: true,
-		// 			additionalData: `@import "@/styles/var.less";`
-		// 		}
-		// 	}
-		// },
 		plugins: [
 			react(),
 			createHtmlPlugin({
@@ -54,7 +45,6 @@ defineConfig((mode: ConfigEnv): UserConfig => {
 		},
 		build: {
 			outDir: 'dist',
-			// esbuild 打包更快，但是不能去除 console.log，去除 console 使用 terser 模式
 			minify: 'esbuild',
 			// minify: "terser",
 			// terserOptions: {

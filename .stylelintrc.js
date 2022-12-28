@@ -1,7 +1,3 @@
-
-
-// @see: https://stylelint.io
-
 export default {
   extends: [
     "stylelint-config-standard", // 配置stylelint拓展插件
